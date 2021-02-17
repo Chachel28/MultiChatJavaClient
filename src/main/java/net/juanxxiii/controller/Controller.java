@@ -12,6 +12,5 @@ public class Controller {
         jFrame.pack();
         jFrame.setVisible(true);
         jFrame.setBounds(300,150, 500, 500);
-
     }
 }
