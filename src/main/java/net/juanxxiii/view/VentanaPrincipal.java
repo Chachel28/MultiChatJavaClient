@@ -13,17 +13,20 @@ public class VentanaPrincipal {
     private boolean online = false;
 
     public VentanaPrincipal(){
-        conectarseButton.addActionListener(e -> {
-            String username = JOptionPane.showInputDialog(panelMain, "¿Cuál es tu nombre de usuario?", null);
-            comprobarNombre(username);
-            if(!online){
-                textField1.setEnabled(false);
-                enviarButton.setEnabled(false);
-            }else{
-                textField1.setEnabled(true);
-                enviarButton.setEnabled(true);
-            }
-        });
+            textField1.setEnabled(false);
+            enviarButton.setEnabled(false);
+            conectarseButton.addActionListener(e -> {
+                if(!online){
+                    String username = JOptionPane.showInputDialog(panelMain, "¿Cuál es tu nombre de usuario?", null);
+                    comprobarNombre(username);
+                }else{
+                    JOptionPane.showMessageDialog(panelMain, "¿Estás seguro de que deseas desconectarte?");
+                    online=false;
+                    textField1.setEnabled(false);
+                    enviarButton.setEnabled(false);
+                    conectarseButton.setText("Conectarse");
+                }
+            });
     }
 
     public void comprobarNombre(String username){
@@ -35,6 +38,9 @@ public class VentanaPrincipal {
             online = false;
         }else{
             online = true;
+            textField1.setEnabled(true);
+            enviarButton.setEnabled(true);
+            conectarseButton.setText("Desconectarse");
         }
     }
 }
