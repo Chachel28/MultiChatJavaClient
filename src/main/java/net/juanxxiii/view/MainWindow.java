@@ -33,10 +33,7 @@ public class MainWindow {
                 checkName(username);
             } else {
                 messageWriter.sentDisconnectMessage();
-                online = false;
-                messageTextField.setEnabled(false);
-                sendButton.setEnabled(false);
-                connectButton.setText("Conectarse");
+                System.exit(0);
             }
         });
         sendButton.addActionListener(actionEvent -> {
